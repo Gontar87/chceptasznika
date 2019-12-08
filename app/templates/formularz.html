@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Wyszukiwanie klasyczne{% endblock %}
+{% block main %}
+	<h1>Wyszukaj klasycznie</h1>
+	<hr>
+    <form>
+		  <div class="form-group">
+		    <label for="exampleFormControlInput1">Nazwa ptasznika</label>
+		    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nazwa ptasznika">
+		  </div>
+
+
+		  <div class="form-group">
+		    <label for="exampleFormControlSelect1">Stopień zaawansowania użytkownika</label>
+		    <select class="form-control" id="exampleFormControlSelect1">
+				<option value="pierwszy">Pierwszy pająk</option>
+				<option value="poczatkujący">Początkujący</option>
+				<option value="srednio">Średniozaawansowany</option>
+				<option value="zaawansowany">Zaawansowany</option>
+		    </select>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="exampleFormControlSelect1">Klimat</label>
+		    <select class="form-control" id="exampleFormControlSelect1">
+ 				<option value="pustynny">Pustynny</option>
+ 				<option value="tropikalny">Tropikalny</option>
+  				<option value="stepowy">Stepowy</option>
+		    </select>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="exampleFormControlSelect1">Biotop</label>
+		    <select class="form-control" id="exampleFormControlSelect1">
+ 				<option value="nadrzewny">Nadrzewny</option>
+ 				<option value="naziemny">Naziemy</option>
+  				<option value="podziemny">Podziemny</option>
+		    </select>
+		  </div>
+
+		  <div class="row">
+		    <div class="col">
+		    <label for="exampleFormControlSelect1">Temperatura minimalna</label>
+		    <select class="form-control" id="exampleFormControlSelect1">
+	 			<option value="20">20</option>
+	 			<option value="21">21</option>
+	 			<option value="22">22</option>
+	 			<option value="23">23</option>
+	 			<option value="24">24</option>
+	 			<option value="25">25</option>
+	 			<option value="26">26</option>
+	 			<option value="27">27</option>
+	 			<option value="28">28</option>
+	 			<option value="29">29</option>
+	 			<option value="30">30</option>
+		    </select>
+		    </div>
+		    <div class="col">
+		    <label for="exampleFormControlSelect1">Temperatura maksymalna</label>
+		    <select class="form-control" id="exampleFormControlSelect1">
+	 			<option value="20">20</option>
+	 			<option value="21">21</option>
+	 			<option value="22">22</option>
+	 			<option value="23">23</option>
+	 			<option value="24">24</option>
+	 			<option value="25">25</option>
+	 			<option value="26">26</option>
+	 			<option value="27">27</option>
+	 			<option value="28">28</option>
+	 			<option value="29">29</option>
+	 			<option value="30">30</option>
+		    </select>
+		    </div>
+		  </div>		  		  
+		  <br>
+		  <div class="form-group">
+		    <label for="exampleFormControlSelect1">Długość życia samicy</label>
+		    <select class="form-control" id="exampleFormControlSelect1">
+	 				<option value="10">5-10 lat</option>
+	 				<option value="15">10-15 lat</option>
+	 				<option value="20">15-20 lat</option>
+		    </select>
+		  </div>
+		  <div class="form-group row">
+		    <div class="col-sm-10">
+		      <button type="submit" class="btn btn-primary">Wyszukaj</button>
+		    </div>
+
+</form>
+{% endblock %}
