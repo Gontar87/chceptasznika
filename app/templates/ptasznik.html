@@ -1,4 +1,46 @@
 
-<h1>{{_id}}</h1> 
+{% extends "base.html" %}
+{% block title %} {{ data._name }}{% endblock %}
+{% block main %}
+	<h1> {{ data.name }} </h1>
+	<hr>
 
-<h5>{{data}}</h5>
+<div class="row">
+
+		    <div class="col">
+				<div class="card" style="width: 30rem;">
+				  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCpK6zGLNsI0TTUrmHBtWHysd2QyxD3AYs15X2mY_I9CjD_Qr1PA&s" class="card-img-top" alt="pajak">
+				  <div class="card-body">
+				    <h5 class="card-title">{{ data.name }}</h5>
+				    <p class="card-text" align="justify"> {{ data.description }} </p>
+				  </div>
+				  <ul class="list-group list-group-flush">
+				    <li class="list-group-item"><b>Miejsce występowania:</b> {{ data.living_area|replace("[", "")|replace("]", "")|replace("'", "")|replace("None","")  }} </li>
+				    <li class="list-group-item"><b>Środowisko życia:</b> {{ data.biotop|replace("[", "")|replace("]", "")|replace("'", "")|replace("None","")  }} </li>
+				    <li class="list-group-item"><b>Biotop:</b> {{ data.type|replace("[", "")|replace("]", "") |replace("'", "")|replace("None","")}} </li>
+				    <li class="list-group-item"><b>Terrarium:</b> {{ data.terrarium|replace("[", "")|replace("]", "") |replace("'", "")|replace("None","")}} </li>
+				    <li class="list-group-item"><b>Wielkość samicy [cm]:</b> {{ data.size_f|replace("None","")|replace(".",",")}}</li>
+				    <li class="list-group-item"><b>Wielkość samca [cm]:</b> {{ data.size_m|replace("None","")|replace(".",",") }}</li>
+				    <li class="list-group-item"><b>Długość życia samicy w latach: </b>{{data.length_of_live_f|replace("None","")}}</li>
+				    <li class="list-group-item"><b>Długość życia samca w latach: </b>{{ data.length_of_live_m|replace("None","")}}</li>
+				    <li class="list-group-item"><b>Zakres temperatur w dzień [°C]: </b>{{ data.temp_day_min|replace("None","") }} - {{ data.temp_day_max|replace("None","") }} </li>
+				    <li class="list-group-item"><b>Zakres temperatur w nocy [°C]:</b> {{ data.temp_night_min|replace("None","") }} - {{ data.temp_night_max|replace("None","") }} </li>
+				    <li class="list-group-item"><b>Zakres wilgotności [%]: </b>{{ data.humidyty_min|replace("None","") }} - {{ data.humidyty_max|replace("None","") }}</li>
+				    <li class="list-group-item"><b>Siła jadu: </b>{{ data.venom_strength|replace("None","") }} </li>	
+				    <li class="list-group-item"><b>Szybkość: </b>{{ data.speed|replace("None","") }} </li>	
+				    <li class="list-group-item"><b>Temperament: </b>{{ data.temperament|replace("None","") }} </li>	
+				    <li class="list-group-item"><b>Trudność hodowli: </b> {{ data.breeding_difficulty|replace("None","") }} </li>	
+				    <li class="list-group-item"><b>Podatność na błędy hodowcy: </b> {{ data.breeder_errors|replace("None","") }} </li>	  
+				  </ul>
+				  <div class="card-body"> 
+				    <a href="https://spidershop.pl/product/brachypelma-smithi-l1-2/" class="card-link">spidershop.pl</a>
+				    <a href="https://argiopeterra.pl//pl/p/Brachypelma-hamorii-ex.-smithi-Ptasznik-czerwonokolanowy-L1-L3/80" class="card-link">argiopeterra.pl</a>
+				  </div>
+				</div>	
+				<br>
+				<br>
+				<br>	    		
+		    </div>
+</div>
+
+{% endblock %}

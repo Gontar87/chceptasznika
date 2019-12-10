@@ -9,13 +9,14 @@
 		<div class="col">
 		  <div class="form-group">
 		    <label for="nazwa">Nazwa ptasznika</label>
-		    <input type="text" class="form-control"  name="nazwa" id="nazwa" placeholder="Nazwa ptasznika">
+		    <input type="text" class="form-control"  name="nazwa" id="nazwa" placeholder="">
 		  </div>
 		</div>
 		 <div class="col">
 		  <div class="form-group">
 		    <label for="stopien">Stopień zaawansowania użytkownika</label>
 		    <select class="form-control" name="stopien">
+		    	<option value="0"></option>
 				<option value="pierwszy">Pierwszy pająk</option>
 				<option value="poczatkujący">Początkujący</option>
 				<option value="srednio">Średniozaawansowany</option>
@@ -30,6 +31,7 @@
 			  <div class="form-group">
 			    <label for="klimat">Klimat</label>
 			    <select class="form-control" name="klimat">
+			    	<option value="0"></option>
 	 				<option value="pustynny">Pustynny</option>
 	 				<option value="tropikalny">Tropikalny</option>
 	  				<option value="stepowy">Stepowy</option>
@@ -40,6 +42,7 @@
 			  <div class="form-group">
 			    <label for="biotop">Biotop</label>
 			    <select class="form-control" name="biotop">
+			    	<option value="0"></option>
 	 				<option value="nadrzewny">Nadrzewny</option>
 	 				<option value="naziemny">Naziemy</option>
 	  				<option value="podziemny">Podziemny</option>
@@ -54,7 +57,7 @@
 		    <div class="col">
 		    <label for="tem_min">Temperatura minimalna</label>
 		    <select class="form-control" name="tem_min">
-	 			<option value="20">20</option>
+	 			<option value="0"></option>
 	 			<option value="21">21</option>
 	 			<option value="22">22</option>
 	 			<option value="23">23</option>
@@ -70,6 +73,7 @@
 		    <div class="col">
 		    <label for="tem_max">Temperatura maksymalna</label>
 		    <select class="form-control" name="tem_max">
+		    	<option value="0"></option>
 	 			<option value="20">20</option>
 	 			<option value="21">21</option>
 	 			<option value="22">22</option>
@@ -88,6 +92,7 @@
 		  <div class="form-group">
 		    <label for="lata">Długość życia samicy</label>
 		    <select class="form-control" name="lata">
+		    		<option value="0"></option>
 	 				<option value="10">5-10 lat</option>
 	 				<option value="15">10-15 lat</option>
 	 				<option value="20">15-20 lat</option>
@@ -102,27 +107,35 @@
 <br>
 <br>
 <br>	
-
+{{ req }}
+{{ nazwa }}
 
 <div class="row">
 {% for d in data %}
 		    <div class="col">
+		    <a href="/ptasznik/{{ d._id }}" class="card-link">
 				<div class="card" style="width: 18rem;">
-				  <img src="static/img/bs.jpg" class="card-img-top" alt="Brachypelma smithi">
+				  <img src="static/img/bs.jpg" class="card-img-top" alt="{{ d.name }}">
 				  <div class="card-body">
-				    <h5 class="card-title">Brachypelma smithi</h5>
-				    <p class="card-text">{{ d['name'] }}</p>
+				    <h5 class="card-title">{{ d.name }}</h5>
+				    <!-- <p class="card-text">tekst karty</p> -->
 				  </div>
 				  <ul class="list-group list-group-flush">
-				    <li class="list-group-item">
-			        <a href="{{ '/ptasznik/%s'%d._id}}" class="btn btn-primary btn-lg"> {{ d._id }} </a 
-					</li>
+					<li class="list-group-item"><b>Występowanie:</b> {{ d.living_area|replace("[", "")|replace("]", "")|replace("'", "")  }} </li>
+				    <li class="list-group-item"><b>Biotop:</b> {{ d.type|replace("[", "")|replace("]", "") |replace("'", "")}} </li>
+				    <li class="list-group-item"><b>Siła jadu: </b>{{ d.venom_strength|replace("None","") }} </li>	
+				    <li class="list-group-item"><b>Szybkość: </b>{{ d.speed|replace("None","") }} </li>	
+				    <li class="list-group-item"><b>Temperament: </b>{{ d.temperament|replace("None","") }} </li>	
+				    <li class="list-group-item"><b>Trudność hodowli: </b> {{ d.breeding_difficulty|replace("None","") }} </li>	
+				    <li class="list-group-item"><b>Podatność na błędy hodowcy: </b> {{ d.breeder_errors|replace("None","") }} </li>	  
+				    <li class="list-group-item"></li>	 
 				  </ul>
 				  <div class="card-body">
 				    <a href="https://spidershop.pl/product/brachypelma-smithi-l1-2/" class="card-link">spidershop.pl</a>
 				    <a href="https://argiopeterra.pl//pl/p/Brachypelma-hamorii-ex.-smithi-Ptasznik-czerwonokolanowy-L1-L3/80" class="card-link">argiopeterra.pl</a>
 				  </div>
 				</div>	
+			</a>
 				<br>
 				<br>
 				<br>	    		
@@ -130,19 +143,6 @@
 {% endfor %}
 </div>
 
-
-
-<!-- <div class="row">
-	{% for d in data %}
-		  {{d["name"]}}
-		  <br>
-
-	{% endfor %}
-</div>
- -->
-<!-- for dictionary in data:
-    print(dictionary['name'])
-    print('####') -->
-
-
 {% endblock %}
+
+<!-- Fota, kategoria (nadrzewny/naziemny/podziemny), miejsce pochodzenia i punktacja, link do sklepu + Jak klikniesz w kartę to przechodzisz do pełnej strony pająka -->
