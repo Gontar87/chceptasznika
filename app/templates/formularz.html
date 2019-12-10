@@ -3,45 +3,57 @@
 {% block main %}
 	<h1>Wyszukaj klasycznie</h1>
 	<hr>
-    <form>
+    <form action="/formularz", method = "POST">
+		 
+	<div class="row">
+		<div class="col">
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">Nazwa ptasznika</label>
-		    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nazwa ptasznika">
+		    <label for="nazwa">Nazwa ptasznika</label>
+		    <input type="text" class="form-control"  name="nazwa" id="nazwa" placeholder="Nazwa ptasznika">
 		  </div>
-
-
+		</div>
+		 <div class="col">
 		  <div class="form-group">
-		    <label for="exampleFormControlSelect1">Stopień zaawansowania użytkownika</label>
-		    <select class="form-control" id="exampleFormControlSelect1">
+		    <label for="stopien">Stopień zaawansowania użytkownika</label>
+		    <select class="form-control" name="stopien">
 				<option value="pierwszy">Pierwszy pająk</option>
 				<option value="poczatkujący">Początkujący</option>
 				<option value="srednio">Średniozaawansowany</option>
 				<option value="zaawansowany">Zaawansowany</option>
 		    </select>
 		  </div>
+		 </div>
+	</div>
 
-		  <div class="form-group">
-		    <label for="exampleFormControlSelect1">Klimat</label>
-		    <select class="form-control" id="exampleFormControlSelect1">
- 				<option value="pustynny">Pustynny</option>
- 				<option value="tropikalny">Tropikalny</option>
-  				<option value="stepowy">Stepowy</option>
-		    </select>
-		  </div>
+		<div class="row">
+		    <div class="col">
+			  <div class="form-group">
+			    <label for="klimat">Klimat</label>
+			    <select class="form-control" name="klimat">
+	 				<option value="pustynny">Pustynny</option>
+	 				<option value="tropikalny">Tropikalny</option>
+	  				<option value="stepowy">Stepowy</option>
+			    </select>
+			  </div>
+		    </div>
+		    <div class="col">
+			  <div class="form-group">
+			    <label for="biotop">Biotop</label>
+			    <select class="form-control" name="biotop">
+	 				<option value="nadrzewny">Nadrzewny</option>
+	 				<option value="naziemny">Naziemy</option>
+	  				<option value="podziemny">Podziemny</option>
+			    </select>
+			  </div>
+		    </div>
+		 </div>
+		  	
 
-		  <div class="form-group">
-		    <label for="exampleFormControlSelect1">Biotop</label>
-		    <select class="form-control" id="exampleFormControlSelect1">
- 				<option value="nadrzewny">Nadrzewny</option>
- 				<option value="naziemny">Naziemy</option>
-  				<option value="podziemny">Podziemny</option>
-		    </select>
-		  </div>
 
 		  <div class="row">
 		    <div class="col">
-		    <label for="exampleFormControlSelect1">Temperatura minimalna</label>
-		    <select class="form-control" id="exampleFormControlSelect1">
+		    <label for="tem_min">Temperatura minimalna</label>
+		    <select class="form-control" name="tem_min">
 	 			<option value="20">20</option>
 	 			<option value="21">21</option>
 	 			<option value="22">22</option>
@@ -56,8 +68,8 @@
 		    </select>
 		    </div>
 		    <div class="col">
-		    <label for="exampleFormControlSelect1">Temperatura maksymalna</label>
-		    <select class="form-control" id="exampleFormControlSelect1">
+		    <label for="tem_max">Temperatura maksymalna</label>
+		    <select class="form-control" name="tem_max">
 	 			<option value="20">20</option>
 	 			<option value="21">21</option>
 	 			<option value="22">22</option>
@@ -74,8 +86,8 @@
 		  </div>		  		  
 		  <br>
 		  <div class="form-group">
-		    <label for="exampleFormControlSelect1">Długość życia samicy</label>
-		    <select class="form-control" id="exampleFormControlSelect1">
+		    <label for="lata">Długość życia samicy</label>
+		    <select class="form-control" name="lata">
 	 				<option value="10">5-10 lat</option>
 	 				<option value="15">10-15 lat</option>
 	 				<option value="20">15-20 lat</option>
@@ -87,4 +99,50 @@
 		    </div>
 
 </form>
+<br>
+<br>
+<br>	
+
+
+<div class="row">
+{% for d in data %}
+		    <div class="col">
+				<div class="card" style="width: 18rem;">
+				  <img src="static/img/bs.jpg" class="card-img-top" alt="Brachypelma smithi">
+				  <div class="card-body">
+				    <h5 class="card-title">Brachypelma smithi</h5>
+				    <p class="card-text">{{ d['name'] }}</p>
+				  </div>
+				  <ul class="list-group list-group-flush">
+				    <li class="list-group-item">
+			        <a href="{{ '/ptasznik/%s'%d._id}}" class="btn btn-primary btn-lg"> {{ d._id }} </a 
+					</li>
+				  </ul>
+				  <div class="card-body">
+				    <a href="https://spidershop.pl/product/brachypelma-smithi-l1-2/" class="card-link">spidershop.pl</a>
+				    <a href="https://argiopeterra.pl//pl/p/Brachypelma-hamorii-ex.-smithi-Ptasznik-czerwonokolanowy-L1-L3/80" class="card-link">argiopeterra.pl</a>
+				  </div>
+				</div>	
+				<br>
+				<br>
+				<br>	    		
+		    </div>
+{% endfor %}
+</div>
+
+
+
+<!-- <div class="row">
+	{% for d in data %}
+		  {{d["name"]}}
+		  <br>
+
+	{% endfor %}
+</div>
+ -->
+<!-- for dictionary in data:
+    print(dictionary['name'])
+    print('####') -->
+
+
 {% endblock %}
