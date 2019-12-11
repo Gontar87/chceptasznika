@@ -107,15 +107,12 @@
 <br>
 <br>
 <br>	
-{{ req }}
-{{ nazwa }}
-
 <div class="row">
 {% for d in data %}
 		    <div class="col">
 		    <a href="/ptasznik/{{ d._id }}" class="card-link">
 				<div class="card" style="width: 18rem;">
-				  <img src="static/img/bs.jpg" class="card-img-top" alt="{{ d.name }}">
+				  <img src="static/img/{{ d._id }}.jpg" class="card-img-top" alt="{{ d.name }}">
 				  <div class="card-body">
 				    <h5 class="card-title">{{ d.name }}</h5>
 				    <!-- <p class="card-text">tekst karty</p> -->
